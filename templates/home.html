@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>GDM Forecasting Model: Enhancing Prenatal Care</title>
+	
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+			background-image: url(r'C:\Users\Valee\Downloads\ges\static\images');
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GDM Forecasting Model: Enhancing Prenatal Care</h1>
+		<h4>Enter Attributes</h4>
+        <form id="inputForm">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="numPregnancies">Number of Pregnancies:</label>
+            <input type="number" id="numPregnancies" name="numPregnancies" required>
+
+            <label for="gestationPrevPregnancy">Gestation in Previous Pregnancy:</label>
+            <input type="number" id="gestationPrevPregnancy" name="gestationPrevPregnancy" required>
+
+            <label for="bmi">BMI:</label>
+            <input type="number" id="bmi" name="bmi" required>
+
+            <label for="hdl">HDL:</label>
+            <input type="number" id="hdl" name="hdl" required>
+
+            <label for="familyHistory">Family History:</label>
+            <select id="familyHistory" name="familyHistory" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="largeChildBirthDefault">Large Child or Birth Default:</label>
+            <select id="largeChildBirthDefault" name="largeChildBirthDefault" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="pcos">PCOS:</label>
+            <select id="pcos" name="pcos" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="sysBP">Sys BP:</label>
+            <input type="number" id="sysBP" name="sysBP" required>
+
+            <label for="diaBP">Dia BP:</label>
+            <input type="number" id="diaBP" name="diaBP" required>
+
+            <label for="ogtt">OGTT:</label>
+            <input type="number" id="ogtt" name="ogtt" required>
+
+            <label for="hemoglobin">Hemoglobin:</label>
+            <input type="number" id="hemoglobin" name="hemoglobin" required>
+
+            <label for="sedentaryLifestyle">Sedentary Lifestyle:</label>
+            <select id="sedentaryLifestyle" name="sedentaryLifestyle" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="prediabetes">Prediabetes:</label>
+            <select id="prediabetes" name="prediabetes" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <button type="submit">Submit</button>
+
+            <script>
+            document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('prediction').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+        </form>
+    </div>
+</body>
+</html>

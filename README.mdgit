@@ -1,0 +1,1 @@
+"# Gestational-Diabeties-Prediction"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/r1sh1v21/Gestational-Diabeties-Prediction.gitgit push -u origin main
